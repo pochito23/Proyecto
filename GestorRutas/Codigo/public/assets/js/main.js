@@ -49,11 +49,7 @@ const pintarDestinos = tipo => {
     filtrar(tipo).forEach(d => lista.appendChild(tarjeta(d)));
     $('contador').innerText = `Mostrando ${filtrar(tipo).length} de ${destinos.length}`;
 };
-const avisoRutas = () => {
-    const aviso = $('avisoRutas');
-    limpiar(aviso);
-    aviso.appendChild(createElement('p', 'Las 4 rutas se generarán aquí con Prolog (próxima entrega).', { color: 'darkorange' }));
-};
+
 
 const armarDestinos = () => {
     const panel = $('panelDestinos');
@@ -63,13 +59,6 @@ const armarDestinos = () => {
     panel.appendChild(Object.assign(document.createElement('div'), { id: 'listaDestinos' }));
 };
 
-const armarRutas = () => {
-    const panel = $('panelRutas');
-    panel.appendChild(createElement('h2', 'Rutas turísticas'));
-    panel.appendChild(createElement('p', 'Elige generar para ver las 4 rutas alternativas.'));
-    panel.appendChild(createElement('button', 'Generar rutas', estiloBoton, avisoRutas));
-    panel.appendChild(Object.assign(document.createElement('div'), { id: 'avisoRutas' }));
-};
 
 const contenidoAcerca = () => contenedor(h2('Zentura') + p(`${strong('Gestor de Rutas Turísticas')} y conexiones de transporte de Tegucigalpa, con horarios y distintos tipos de transporte.`));
 const contenidoAyuda = () => contenedor(p('Usa los botones de tipo para filtrar los destinos. El botón Tema alterna entre claro y oscuro.'));
@@ -107,6 +96,5 @@ Object.assign($('panelDestinos').style, { position: 'absolute', top: '0px', left
 Object.assign($('panelRutas').style, { position: 'absolute', top: '0px', right: '0px', width: '48%' });
 
 armarDestinos();
-armarRutas();
 pintarDestinos('todos');
 aplicarTema('light');
