@@ -1,4 +1,11 @@
 /*
+  @author jcoreaa@unah.hn 20231003748
+  @author acxel.canales@unah.hn 20241000716
+  @author janior.barahona@unah.hn 20221003748
+  @version v0.2.0
+  @date 20/11/26
+ */
+/*
 tipo_destino(Id,Nombre).
 tipo_transporte(Id,Nombre).
 destino(Id,Nombre,TipoId,Zona,LimitePersonas).
@@ -33,7 +40,6 @@ guia(1, 'Jose', español).
 guia(2, 'Janior', ingles).
 guia(3, 'Axcel', italiano).
 
-%destino(Id,Nombre,TipoId,Zona,LimitePersonas).
 destino(1,'Santa Lucia',3,occidente,20).
 destino(2, 'Basílica de Suyapa',1, suyapa, 50).
 destino(3, 'Cristo del Picacho',2,picacho, 30).
@@ -111,13 +117,10 @@ grupo(4, 1, 35).
 
 duracionMaxVisita(50).
 
-% 1. conectados(A, B): existe conexión entre dos destinos distintos.
 conectados(A, B) :-
     conexion(A, B, _),
         A \= B.
 
-% 2. ruta_valida(Ruta): lista de destinos sin repetir, cada salto con
-%    conexión existente y duración <= duracionMaxVisita.
 ruta_valida([_]).
 ruta_valida([A, B | Resto]) :-
     sin_repetidos([A, B | Resto]),
